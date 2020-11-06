@@ -8,7 +8,6 @@ internal void clear_screen(u32 color) {
 	}
 }
 
-
 internal void draw_rect_in_pixels(int x0, int y0, int x1, int y1, u32 color) {
 	x0 = clamp(0, x0, render_state.width);
 	x1 = clamp(0, x1, render_state.width);
@@ -41,4 +40,22 @@ internal void draw_rect(float x, float y, float half_size_x, float half_size_y, 
 	int y1 = y + half_size_y;
 
 	draw_rect_in_pixels(x0, y0, x1, y1, color);
+}
+
+internal void show_score_player1(int score) {
+	float at_x = -80;
+	for (int i = 0; i < score; i++)
+	{
+		draw_rect(at_x, 47, 1, 1, 0x00ff00);
+		at_x += 2.5f;
+	}
+}
+
+internal void show_score_player2(int score) {
+	float at_x = 80;
+	for (int i = 0; i < score; i++)
+	{
+		draw_rect(at_x, 47, 1, 1, 0x00ff00);
+		at_x -= 2.5f;
+	}
 }
